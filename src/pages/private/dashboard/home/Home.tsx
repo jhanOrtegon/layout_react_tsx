@@ -1,7 +1,7 @@
-import { useUser, useHttpGet, useHttpPost } from "@/hooks"
+import { useUser, useHttpGet, useHttpPost, useStore } from "@/hooks"
 import { LayoutHome } from "./styled-components"
 
-export const Home = () => {
+const Home = () => {
 
     const {
         onCreateUser,
@@ -21,6 +21,7 @@ export const Home = () => {
         HttpGetLoading: HttpGetLoadingRick,
         HttpGetResult: HttpGetResultRick
     } = useHttpGet()
+
 
     return (
         <LayoutHome
@@ -76,3 +77,5 @@ export const Home = () => {
         </LayoutHome>
     )
 }
+
+export default Home

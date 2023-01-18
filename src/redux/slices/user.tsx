@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { UserEmptyState } from '@/models';
+import { UserEmptyState } from '@/types';
 
 export const userSlice = createSlice({
     name: 'user',

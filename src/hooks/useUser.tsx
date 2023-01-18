@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { createUser, updateUser, resetUser } from '@/redux/slices/user'
-import { User } from '@/models';
+import { User } from '@/types';
 
 export const useUser = () => {
     const dispatch = useDispatch();
