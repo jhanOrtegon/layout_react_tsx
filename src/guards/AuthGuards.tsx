@@ -4,8 +4,8 @@ import { publicRoutes } from '@/types';
 
 export const AuthGuards = () => {
 
-    const { user } = useStore()
+    const { user, login } = useStore()
 
-    return !user.id ? <Outlet /> : <Navigate replace to={publicRoutes.LOGIN} />
+    return login.id ? <Outlet /> : <Navigate replace to={publicRoutes.LOGIN} />
 
 }

@@ -1,4 +1,5 @@
-import { useUser, useHttpGet, useHttpPost, useStore } from "@/hooks"
+import { Spinner } from "@/components"
+import { useUser, useHttpGet, useHttpPost, useStore, useLogin } from "@/hooks"
 import { LayoutHome } from "./styled-components"
 
 const Home = () => {
@@ -22,60 +23,76 @@ const Home = () => {
         HttpGetResult: HttpGetResultRick
     } = useHttpGet()
 
+    const { onLogout } = useLogin()
 
     return (
-        <LayoutHome
-            background={"primary"}
-        >
-            <button
-                onClick={() => {
-                    HttpGet('/character')
-                }}
-            >
-                fetch Rick And Mort
-            </button>
+        (HttpGetLoadingRick || HttpGetLoading)
+            ? <Spinner />
+            : (
+                <LayoutHome
+                    background={"primary"}
+                >
 
-            <button
-                onClick={() => {
-                    HttpGetRick('/character/10')
-                }}
-            >
-                fetch Rick And Mort 10
-            </button>
+                    <button
+                        onClick={() => onLogout()}
+                    >
+                        desLogeate
+                    </button>
 
-            <button
-                onClick={() => onCreateUser({ id: '1', name: 'jhan Carlos' })}
-            >
-                create user
-            </button>
+                    <button
+                        onClick={() => {
+                            HttpGet('/character')
+                        }}
+                    >
+                        fetch Rick And Mort
+                    </button>
 
-            <hr />
+                    <button
+                        onClick={() => {
+                            HttpGetRick('/character/10')
+                        }}
+                    >
+                        fetch Rick And Mort 10
+                    </button>
 
-            <button
-                onClick={() => onUpdateUser({ id: '10', name: 'jhan' })}
-            >
-                update user
-            </button>
+                    <button
+                        onClick={() => onCreateUser({ id: '1', name: 'jhan Carlos' })}
+                    >
+                        create user
+                    </button>
 
-            <hr />
+                    <hr />
 
-            <button
-                onClick={() => onResetUser()}
-            >
-                reset user
-            </button>
+                    <button
+                        onClick={() => onUpdateUser({ id: '10', name: 'jhan' })}
+                    >
+                        update user
+                    </button>
 
-            <hr />
+                    <hr />
 
-            <h1>users</h1>
-            {JSON.stringify(getUserStore)}
-            <hr />
-            {JSON.stringify(HttpGetResultRick)}
-            <hr />
-            {JSON.stringify(HttpGetResult)}
+                    <button
+                        onClick={() => onResetUser()}
+                    >
+                        reset user
+                    </button>
 
-        </LayoutHome>
+                    <hr />
+
+                    <h1>users</h1>
+                    {JSON.stringify(getUserStore)}
+                    <hr />
+                    {JSON.stringify(HttpGetResultRick)}
+                    <hr />
+                    {JSON.stringify(HttpGetResult)}
+
+                </LayoutHome>
+            )
+
+
     )
+
+
 }
 
 export default Home

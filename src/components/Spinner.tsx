@@ -1,10 +1,10 @@
 import { overrideSpinner } from "@/utilities";
 import { useState } from "react";
 import { PacmanLoader } from "react-spinners/";
+import { useStore } from '@/hooks';
 
-export const Spinner = () => {
-    let [loading, setLoading] = useState(true);
-    let [color, setColor] = useState("#F2D648");
+export const Spinner = ({ loading = true, color = '#F2D648' }) => {
+
 
     return (
         <div className="sweet-loading">

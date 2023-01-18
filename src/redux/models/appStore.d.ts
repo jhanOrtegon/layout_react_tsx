@@ -1,5 +1,6 @@
-import { User } from '@/types';
+import { User, Login } from '@/types';
 
 export interface AppStore {
-    user: User
+    login: Login,
+    user: User,
 }
