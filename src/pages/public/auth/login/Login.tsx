@@ -1,15 +1,23 @@
-import { useLogin } from "@/hooks"
-import { useNavigate } from "react-router-dom"
-import { privateRoutes } from '@/types';
+import { useLogin, useStore } from "@/hooks"
+import { privateRoutes, roles } from '@/types';
+import { useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
-    const { onLogin, onLogout } = useLogin()
+    const { onLogin } = useLogin()
+    const { login } = useStore()
     const navigate = useNavigate()
 
     const handleLogin = () => {
+        onLogin({ id: '10', name: 'jhan', role: roles.ADMIN })
         navigate(privateRoutes.DASHBOARD, { replace: true })
-        onLogin({ id: '10', name: 'jhan' })
     }
+
+    useEffect(() => {
+        if (login?.id) {
+            navigate(privateRoutes.DASHBOARD, { replace: true })
+        }
+    }, [])
 
     return (
         <div>

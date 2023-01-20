@@ -6,6 +6,7 @@ import { RoutesWithNotFound } from '@/utilities';
 const Home = lazy(() => import('@/pages/private/dashboard/home/Home'))
 
 const Private = () => {
+
     return (
         <RoutesWithNotFound>
             {/* <Route path='/' element={<Navigate to={`${privateRoutes.DASHBOARD}${privateRoutes.HOME}`} />} /> */}
